@@ -1,3 +1,12 @@
-# Gatsby starter kit
+# Gatsby Starter Kit (with typescript)
 
-[Gatsby](https://www.gatsbyjs.org/)
+## Usage:
+
+- Clone the repo
+- install the dependencies `$ npm install`
+- dev mode `$ npm run developp`
+- build `$ npm run build`
+
+## Features:
+
+- Styles: [emotion](https://emotion.sh/docs/introduction)
