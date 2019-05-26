@@ -1,8 +1,11 @@
 import 'styles/reset'
-import { styles } from './styles/home'
 
 import { graphql, useStaticQuery } from 'gatsby'
 import * as React from 'react'
+import { css } from 'emotion'
+
+import { spacings } from 'styles/spacings'
+import { fontSizes } from 'styles/fonts'
 
 import { fromNullable } from 'fp-ts/lib/Option'
 
@@ -71,7 +74,7 @@ export default function Home() {
     const dateLabel = date ? `published ${date}` : 'unknown date publication'
 
     return (
-      <li className={styles.post} key={id}>
+      <li className={postStyles} key={id}>
         <Link to={`/${slug}`} label={title || 'no title'} />
         <span>{dateLabel}</span>
       </li>
@@ -82,7 +85,20 @@ export default function Home() {
     <Layout>
       <Header header="h1" label="Home" />
       <Header header="h3" label="Posts:" />
-      <ul className={styles.posts}>{posts.map(renderPostLink)}</ul>
+      <ul className={postsStyles}>{posts.map(renderPostLink)}</ul>
     </Layout>
   )
 }
+
+const postsStyles = css({
+  '> li': {
+    marginBottom: spacings.sm
+  }
+})
+
+const postStyles = css({
+  a: {
+    marginRight: spacings.sm,
+    fontSize: fontSizes.legible
+  }
+})
