@@ -36,7 +36,7 @@ export default function BlogPost(props: Props) {
     .getOrElse('no title')
 
   const date: React.ReactElement | undefined = fromNullable(frontmatter.date)
-    .map(d => <span className={styles.date}>{`published on ${d}`}</span>)
+    .map(d => <span css={styles.date}>{`published on ${d}`}</span>)
     .toUndefined()
 
   return (

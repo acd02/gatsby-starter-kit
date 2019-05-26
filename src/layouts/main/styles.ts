@@ -1,4 +1,5 @@
-import { css } from 'emotion'
+/** @tsx tsx */
+import { css } from '@emotion/core'
 
 import { toRem } from 'styles/utils'
 import { spacings } from 'styles/spacings'
@@ -42,11 +43,18 @@ const main = css({
   maxWidth: toRem(960),
   margin: '0 auto',
   padding: spacings.sm,
-  'h1, h2': {
-    marginBottom: spacings.md
+  h1: {
+    fontSize: fontSizes.xl
+  },
+  h2: {
+    fontSize: fontSizes.lg
   },
   h3: {
-    marginBottom: spacings.default
+    marginBottom: spacings.default,
+    fontSize: fontSizes.md
+  },
+  'h1, h2': {
+    marginBottom: spacings.md
   }
 })
 

@@ -1,8 +1,8 @@
-import 'styles/reset'
+/** @tsx tsx */
+import { css } from '@emotion/core'
 
 import { graphql, useStaticQuery } from 'gatsby'
 import * as React from 'react'
-import { css } from 'emotion'
 
 import { spacings } from 'styles/spacings'
 import { fontSizes } from 'styles/fonts'
@@ -10,7 +10,6 @@ import { fontSizes } from 'styles/fonts'
 import { fromNullable } from 'fp-ts/lib/Option'
 
 import Layout from 'layouts/main'
-import { Header } from 'components/atoms/header'
 import { Link } from 'components/atoms/link'
 
 import { MarkdownRemarkConnection, MarkdownRemarkFrontmatter } from 'typings/graphqlTypes'
@@ -74,7 +73,7 @@ export default function Home() {
     const dateLabel = date ? `published ${date}` : 'unknown date publication'
 
     return (
-      <li className={postStyles} key={id}>
+      <li css={postStyles} key={id}>
         <Link to={`/${slug}`} label={title || 'no title'} />
         <span>{dateLabel}</span>
       </li>
@@ -83,9 +82,9 @@ export default function Home() {
 
   return (
     <Layout>
-      <Header header="h1" label="Home" />
-      <Header header="h3" label="Posts:" />
-      <ul className={postsStyles}>{posts.map(renderPostLink)}</ul>
+      <h1>Home</h1>
+      <h3>Posts:</h3>
+      <ul css={postsStyles}>{posts.map(renderPostLink)}</ul>
     </Layout>
   )
 }

@@ -1,4 +1,5 @@
-import { css } from 'emotion'
+/** @tsx tsx */
+import { css } from '@emotion/core'
 
 import { fontSizes } from 'styles/fonts'
 import { colors } from 'styles/colors'
