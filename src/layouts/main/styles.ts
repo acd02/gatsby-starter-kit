@@ -1,4 +1,3 @@
-/** @tsx tsx */
 import { css } from '@emotion/core'
 
 import { toRem } from 'styles/utils'

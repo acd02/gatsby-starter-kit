@@ -1,4 +1,3 @@
-/** @tsx tsx */
 import { css } from '@emotion/core'
 
 import { colors } from 'styles/colors'
@@ -26,8 +25,8 @@ const root = css({
 
 const isActive = css({
   '&::before': {
-    transformOrigin: 'bottom left',
-    transform: 'scaleX(1)'
+    transformOrigin: 'bottom left !important',
+    transform: 'scaleX(1) !important'
   }
 })
 

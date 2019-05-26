@@ -1,5 +1,4 @@
-/** @tsx tsx */
-import { SerializedStyles } from '@emotion/core'
+import { SerializedStyles, ClassNames } from '@emotion/core'
 import { styles } from './styles'
 
 import * as React from 'react'
@@ -10,13 +9,21 @@ import { Routes } from 'routes'
 type Props = {
   to: Routes | string
   label: string
-  className?: SerializedStyles
+  styles?: SerializedStyles
 }
 
 export function Link(props: Props) {
   return (
-    <GatsbyLink css={[styles.root, props.className]} to={props.to}>
-      {props.label}
-    </GatsbyLink>
+    <ClassNames>
+      {({ css }) => (
+        <GatsbyLink
+          activeClassName={css(styles.isActive)}
+          css={[styles.root, props.styles]}
+          to={props.to}
+        >
+          {props.label}
+        </GatsbyLink>
+      )}
+    </ClassNames>
   )
 }

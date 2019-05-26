@@ -1,5 +1,4 @@
 import { styles } from './styles'
-
 import * as React from 'react'
 
 import { Link } from 'components/atoms/link'
