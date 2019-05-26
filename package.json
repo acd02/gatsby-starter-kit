@@ -8,7 +8,15 @@
     "clean": "gatsby clean",
     "develop": "env-cmd -f .env.development gatsby develop",
     "generate": "graphql-codegen",
+    "lint": "eslint --config .eslintrc.js ./src --ext .ts,.tsx --fix",
+    "lint-staged": "lint-staged --config .lintstagedrc.json",
+    "prettier": "prettier --config .prettierrc.json --write \"src/**/*.{ts,tsx}\"",
     "start": "npm run develop"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "dependencies": {
     "@types/node": "12.0.2",
@@ -50,6 +58,8 @@
     "eslint-plugin-standard": "4.0.0",
     "gatsby-plugin-eslint": "2.0.5",
     "graphql-codegen": "0.4.0",
+    "husky": "2.3.0",
+    "lint-staged": "8.1.7",
     "node-sass": "4.12.0",
     "prettier": "1.17.1",
     "ts-node": "8.1.1",
