@@ -3,7 +3,14 @@ import { styles } from './styles'
 
 import * as React from 'react'
 import { graphql } from 'gatsby'
-import { fromNullable } from 'fp-ts/lib/Option'
+import {
+  fromNullable,
+  map as mapOpt,
+  toUndefined,
+  getOrElse,
+  filter as filterOpt
+} from 'fp-ts/lib/Option'
+import { pipe } from 'fp-ts/lib/pipeable'
 
 import Layout from 'layouts/main'
 import { MarkdownRemark, MarkdownRemarkFrontmatter } from 'typings/graphqlTypes'
@@ -30,14 +37,21 @@ export default function BlogPost(props: Props) {
 
   const frontmatter = _frontmatter as MarkdownRemarkFrontmatter
 
-  const content = fromNullable(html).getOrElse('')
-  const title = fromNullable(frontmatter.title)
-    .filter(t => t.length > 0)
-    .getOrElse('no title')
+  const content = pipe(
+    fromNullable(html),
+    getOrElse(() => '')
+  )
+  const title = pipe(
+    fromNullable(frontmatter.title),
+    filterOpt(t => t.length > 0),
+    getOrElse(() => 'no title')
+  )
 
-  const date: React.ReactElement | undefined = fromNullable(frontmatter.date)
-    .map(d => <span css={styles.date}>{`published on ${d}`}</span>)
-    .toUndefined()
+  const date: React.ReactElement | undefined = pipe(
+    fromNullable(frontmatter.date),
+    mapOpt(d => <span css={styles.date}>{`published on ${d}`}</span>),
+    toUndefined
+  )
 
   return (
     <Layout>

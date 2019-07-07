@@ -1,5 +1,6 @@
 import * as path from 'path'
-import { fromNullable } from 'fp-ts/lib/Option'
+import { fromNullable, mapNullable, getOrElse } from 'fp-ts/lib/Option'
+import { pipe } from 'fp-ts/lib/pipeable'
 
 import { CreatePages } from './typings'
 import { MarkdownRemarkConnection } from '../src/typings/graphqlTypes'
@@ -28,9 +29,11 @@ export const createPages: CreatePages<Query> = async ({ graphql, actions }) => {
   `)
 
   query.data.allMarkdownRemark.edges.forEach(e => {
-    const slug = fromNullable(e.node.fields)
-      .mapNullable(f => f.slug)
-      .getOrElse('')
+    const slug = pipe(
+      fromNullable(e.node.fields),
+      mapNullable(f => f.slug),
+      getOrElse(() => '')
+    )
 
     createPage({
       component: blogTemplatePath,

@@ -1,5 +1,6 @@
 import * as path from 'path'
-import { fromNullable } from 'fp-ts/lib/Option'
+import { fromNullable, getOrElse } from 'fp-ts/lib/Option'
+import { pipe } from 'fp-ts/lib/pipeable'
 
 import { CreateNode, Node } from './typings'
 import { MarkdownRemark } from '../src/typings/graphqlTypes'
@@ -12,7 +13,10 @@ export const onCreateNode: CreateNode = async ({ node, actions }) => {
   if (type === 'MarkdownRemark') {
     const markdownNode = (node as unknown) as MarkdownRemark
     const slug = path.basename(
-      fromNullable(markdownNode.fileAbsolutePath).getOrElse(''),
+      pipe(
+        fromNullable(markdownNode.fileAbsolutePath),
+        getOrElse(() => '')
+      ),
       '.md'
     )
 

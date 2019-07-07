@@ -6,7 +6,14 @@ import * as React from 'react'
 import { spacings } from 'styles/spacings'
 import { fontSizes } from 'styles/fonts'
 
-import { fromNullable } from 'fp-ts/lib/Option'
+import {
+  fromNullable,
+  mapNullable,
+  getOrElse,
+  filter as filterOpt,
+  toUndefined
+} from 'fp-ts/lib/Option'
+import { pipe } from 'fp-ts/lib/pipeable'
 
 import Layout from 'layouts/main'
 import { Link } from 'components/atoms/link'
@@ -48,15 +55,22 @@ export default function Home() {
   const posts: PostContent[] = postsQuery.allMarkdownRemark.edges.map(e => {
     const { frontmatter: _frontmatter, id, fields } = e.node
     const frontmatter = _frontmatter as MarkdownRemarkFrontmatter
-    const slug = fromNullable(fields)
-      .mapNullable(f => f.slug)
-      .getOrElse('')
+    const slug = pipe(
+      fromNullable(fields),
+      mapNullable(f => f.slug),
+      getOrElse(() => '')
+    )
 
-    const title = fromNullable(frontmatter.title)
-      .filter(t => t.length > 0)
-      .toUndefined()
+    const title = pipe(
+      fromNullable(frontmatter.title),
+      filterOpt(t => t.length > 0),
+      toUndefined
+    )
 
-    const date: string | undefined = fromNullable(frontmatter.date).toUndefined()
+    const date: string | undefined = pipe(
+      fromNullable(frontmatter.date),
+      toUndefined
+    )
 
     return {
       id,
