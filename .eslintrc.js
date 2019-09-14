@@ -3,7 +3,7 @@ module.exports = {
     __PATH_PREFIX__: true
   },
   parser: '@typescript-eslint/parser', // Specifies the ESLint parser
-  plugins: ['@typescript-eslint', 'react-hooks'],
+  plugins: ['@typescript-eslint', 'react-hooks', 'fp', 'simple-import-sort'],
   extends: [
     'standard',
     'plugin:@typescript-eslint/recommended', // Uses the recommended rules from the @typescript-eslint/eslint-plugin
@@ -27,15 +27,27 @@ module.exports = {
     'react-hooks/rules-of-hooks': 'error',
     'react/jsx-key': 0,
     'react/display-name': [0, { ignoreTranspilerName: false }],
+    // fp
+    'fp/no-nil': 'off',
+    'fp/no-unused-expression': 'off',
+    'fp/no-rest-parameters': 'off',
+    // import
+    'import/no-absolute-path': 0,
+    // simple-import-sort
+    'simple-import-sort/sort': 1,
     // Misc
-    'max-lines': [1, { max: 100, skipBlankLines: true, skipComments: true }],
+    complexity: [1, 5],
+    curly: ['error', 'multi', 'consistent'],
+    'max-lines': [1, { max: 180, skipBlankLines: true, skipComments: true }],
+    'max-lines-per-function': [1, { max: 50, skipComments: true }],
     'max-len': ['error', { code: 90, ignoreTemplateLiterals: true }],
+    'max-depth': [2, 2],
+    'max-nested-callbacks': [1, 2],
     'newline-before-return': 2,
     'no-console': ['error', { allow: ['error'] }],
     'no-debugger': 2,
     'no-shadow': 2,
     'no-var': 2,
-    'prefer-const': 2,
     quotes: ['error', 'single', { allowTemplateLiterals: false }],
     'space-before-function-paren': [
       'error',
