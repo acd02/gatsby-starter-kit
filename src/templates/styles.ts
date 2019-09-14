@@ -1,7 +1,7 @@
 import { css } from '@emotion/core'
 
-import { fontSizes } from 'styles/fonts'
-import { colors } from 'styles/colors'
+import { colors } from '/styles/colors'
+import { fontSizes } from '/styles/fonts'
 
 const date = css({
   display: 'block',

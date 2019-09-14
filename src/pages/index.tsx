@@ -1,29 +1,48 @@
 import { css } from '@emotion/core'
-
-import { graphql, useStaticQuery } from 'gatsby'
-import * as React from 'react'
-
-import { spacings } from 'styles/spacings'
-import { fontSizes } from 'styles/fonts'
-
 import {
-  fromNullable,
-  mapNullable,
-  getOrElse,
   filter as filterOpt,
+  fromNullable,
+  getOrElse,
+  mapNullable,
   toUndefined
 } from 'fp-ts/lib/Option'
 import { pipe } from 'fp-ts/lib/pipeable'
+import { graphql, useStaticQuery } from 'gatsby'
+import * as React from 'react'
 
-import Layout from 'layouts/main'
-import { Link } from 'components/atoms/link'
-
-import { MarkdownRemarkConnection, MarkdownRemarkFrontmatter } from 'typings/graphqlTypes'
+import { Link } from '/components/atoms/link'
+import Layout from '/layouts/main'
+import { fontSizes } from '/styles/fonts'
+import { spacings } from '/styles/spacings'
+import {
+  MarkdownRemarkConnection,
+  MarkdownRemarkFrontmatter
+} from '/typings/graphqlTypes'
 
 type Query = {
   allMarkdownRemark: MarkdownRemarkConnection
 }
 
+type PostContent = {
+  id: string
+  date?: string
+  title?: string
+  slug: string
+}
+
+function renderPostLink(post: PostContent) {
+  const { title, slug, id, date } = post
+
+  const dateLabel = date ? `published ${date}` : 'unknown date publication'
+
+  return (
+    <li css={postStyles} key={id}>
+      <Link to={`/${slug}`} label={title || 'no title'} />
+      <span>{dateLabel}</span>
+    </li>
+  )
+}
+/* eslint-disable-next-line max-lines-per-function */
 export default function Home() {
   const postsQuery: Query = useStaticQuery(graphql`
     query {
@@ -44,13 +63,6 @@ export default function Home() {
       }
     }
   `)
-
-  type PostContent = {
-    id: string
-    date?: string
-    title?: string
-    slug: string
-  }
 
   const posts: PostContent[] = postsQuery.allMarkdownRemark.edges.map(e => {
     const { frontmatter: _frontmatter, id, fields } = e.node
@@ -79,19 +91,6 @@ export default function Home() {
       slug
     }
   })
-
-  function renderPostLink(post: PostContent) {
-    const { title, slug, id, date } = post
-
-    const dateLabel = date ? `published ${date}` : 'unknown date publication'
-
-    return (
-      <li css={postStyles} key={id}>
-        <Link to={`/${slug}`} label={title || 'no title'} />
-        <span>{dateLabel}</span>
-      </li>
-    )
-  }
 
   return (
     <Layout>

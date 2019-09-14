@@ -1,9 +1,9 @@
-import * as path from 'path'
 import { fromNullable, getOrElse } from 'fp-ts/lib/Option'
 import { pipe } from 'fp-ts/lib/pipeable'
+import * as path from 'path'
 
-import { CreateNode, Node } from './typings'
 import { MarkdownRemark } from '../src/typings/graphqlTypes'
+import { CreateNode, Node } from './typings'
 
 export const onCreateNode: CreateNode = async ({ node, actions }) => {
   const { internal } = node

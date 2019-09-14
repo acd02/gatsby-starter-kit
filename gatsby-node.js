@@ -1,3 +1,4 @@
+/* eslint-disable fp/no-mutation */
 /* eslint-disable-next-line */
 const path = require('path')
 
@@ -13,13 +14,13 @@ exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
       alias: {
-        components: path.resolve(__dirname, './src/components/'),
-        layouts: path.resolve(__dirname, './src/layouts/'),
-        routes: path.resolve(__dirname, './src/routes.ts'),
-        styles: path.resolve(__dirname, './src/styles/'),
-        templates: path.resolve(__dirname, './src/templates/'),
-        typings: path.resolve(__dirname, './typings/'),
-        utils: path.resolve(__dirname, './src/utils/')
+        '/components': path.resolve(__dirname, './src/components/'),
+        '/layouts': path.resolve(__dirname, './src/layouts/'),
+        '/routes': path.resolve(__dirname, './src/routes.ts'),
+        '/styles': path.resolve(__dirname, './src/styles/'),
+        '/templates': path.resolve(__dirname, './src/templates/'),
+        '/typings': path.resolve(__dirname, './typings/'),
+        '/utils': path.resolve(__dirname, './src/utils/')
       }
     }
   })

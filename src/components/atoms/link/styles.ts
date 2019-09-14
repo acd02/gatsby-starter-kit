@@ -1,6 +1,6 @@
 import { css } from '@emotion/core'
 
-import { colors } from 'styles/colors'
+import { colors } from '/styles/colors'
 
 const root = css({
   position: 'relative',

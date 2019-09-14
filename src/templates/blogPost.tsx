@@ -1,19 +1,19 @@
-import * as theme from './markdown.module.scss'
-import { styles } from './styles'
-
-import * as React from 'react'
-import { graphql } from 'gatsby'
 import {
+  filter as filterOpt,
   fromNullable,
-  map as mapOpt,
-  toUndefined,
   getOrElse,
-  filter as filterOpt
+  map as mapOpt,
+  toUndefined
 } from 'fp-ts/lib/Option'
 import { pipe } from 'fp-ts/lib/pipeable'
+import { graphql } from 'gatsby'
+import * as React from 'react'
 
-import Layout from 'layouts/main'
-import { MarkdownRemark, MarkdownRemarkFrontmatter } from 'typings/graphqlTypes'
+import Layout from '/layouts/main'
+import { MarkdownRemark, MarkdownRemarkFrontmatter } from '/typings/graphqlTypes'
+
+import * as theme from './markdown.module.scss'
+import { styles } from './styles'
 
 type Props = {
   data: {

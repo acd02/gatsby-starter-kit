@@ -1,10 +1,10 @@
-import { SerializedStyles, ClassNames } from '@emotion/core'
-import { styles } from './styles'
-
-import * as React from 'react'
+import { ClassNames, SerializedStyles } from '@emotion/core'
 import { Link as GatsbyLink } from 'gatsby'
+import * as React from 'react'
 
-import { Routes } from 'routes'
+import { Routes } from '/routes'
+
+import { styles } from './styles'
 
 type Props = {
   to: Routes | string

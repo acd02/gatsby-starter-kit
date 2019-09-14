@@ -1,8 +1,8 @@
 import { css } from '@emotion/core'
 
-import { toRem } from 'styles/utils'
-import { spacings } from 'styles/spacings'
-import { fontSizes } from 'styles/fonts'
+import { fontSizes } from '/styles/fonts'
+import { spacings } from '/styles/spacings'
+import { toRem } from '/styles/utils'
 
 const root = css({
   display: 'flex',
