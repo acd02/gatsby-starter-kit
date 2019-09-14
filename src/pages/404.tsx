@@ -1,11 +1,11 @@
 import * as React from 'react'
 
-import Layout from '/layouts/main'
+import { MainLayout } from '/layouts/main'
 
 export default function NotFound() {
   return (
-    <Layout>
+    <MainLayout>
       <h1>Sorry!</h1>
-    </Layout>
+    </MainLayout>
   )
 }

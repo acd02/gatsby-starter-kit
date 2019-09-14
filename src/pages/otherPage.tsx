@@ -1,11 +1,11 @@
 import * as React from 'react'
 
-import Layout from '/layouts/main'
+import { MainLayout } from '/layouts/main'
 
 export default function OtherPage() {
   return (
-    <Layout>
+    <MainLayout>
       <h1>other page</h1>
-    </Layout>
+    </MainLayout>
   )
 }

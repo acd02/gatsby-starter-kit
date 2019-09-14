@@ -20,7 +20,7 @@ function Nav() {
 function Footer() {
   return <footer css={styles.footer}>footer</footer>
 }
-export default function MainLayout(props: React.Props<{}>) {
+export function MainLayout(props: React.Props<{}>) {
   return (
     <div css={styles.root}>
       <Nav />

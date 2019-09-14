@@ -9,7 +9,7 @@ import { pipe } from 'fp-ts/lib/pipeable'
 import { graphql } from 'gatsby'
 import * as React from 'react'
 
-import Layout from '/layouts/main'
+import { MainLayout } from '/layouts/main'
 import { MarkdownRemark, MarkdownRemarkFrontmatter } from '/typings/graphqlTypes'
 
 import * as theme from './markdown.module.scss'
@@ -54,13 +54,13 @@ export default function BlogPost(props: Props) {
   )
 
   return (
-    <Layout>
+    <MainLayout>
       <div className={theme.markdown}>
         <h1>
           {title} {date}
         </h1>
         <div dangerouslySetInnerHTML={{ __html: content }} />
       </div>
-    </Layout>
+    </MainLayout>
   )
 }
