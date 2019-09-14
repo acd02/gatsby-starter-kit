@@ -9,9 +9,10 @@ import {
 import { pipe } from 'fp-ts/lib/pipeable'
 import { graphql, useStaticQuery } from 'gatsby'
 import * as React from 'react'
+import { Helmet } from 'react-helmet'
 
 import { Link } from '/components/atoms/link'
-import Layout from '/layouts/main'
+import { MainLayout } from '/layouts/main'
 import { fontSizes } from '/styles/fonts'
 import { spacings } from '/styles/spacings'
 import {
@@ -93,11 +94,16 @@ export default function Home() {
   })
 
   return (
-    <Layout>
-      <h1>Home</h1>
-      <h3>Posts:</h3>
-      <ul css={postsStyles}>{posts.map(renderPostLink)}</ul>
-    </Layout>
+    <>
+      <Helmet>
+        <title>Home</title>
+      </Helmet>
+      <MainLayout>
+        <h1>Home</h1>
+        <h3>Posts:</h3>
+        <ul css={postsStyles}>{posts.map(renderPostLink)}</ul>
+      </MainLayout>
+    </>
   )
 }
 
