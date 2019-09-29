@@ -43,7 +43,6 @@ module.exports = {
     'max-lines-per-function': [1, { max: 50, skipComments: true }],
     'max-len': ['error', { code: 90, ignoreTemplateLiterals: true }],
     'max-depth': [2, 2],
-    'max-nested-callbacks': [1, 2],
     'newline-before-return': 2,
     'no-console': ['error', { allow: ['error'] }],
     'no-debugger': 2,
