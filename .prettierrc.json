@@ -3,5 +3,13 @@
   "printWidth": 90,
   "tabWidth": 2,
   "semi": false,
-  "singleQuote": true
+  "singleQuote": true,
+  "arrowParens": "avoid",
+  "htmlWhitespaceSensitivity": "css",
+  "jsxBracketSameLine": false,
+  "jsxSingleQuote": false,
+  "proseWrap": "preserve",
+  "quoteProps": "as-needed",
+  "trailingComma": "none",
+  "useTabs": false
 }
