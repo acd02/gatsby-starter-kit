@@ -80,10 +80,7 @@ export default function Home() {
       toUndefined
     )
 
-    const date: string | undefined = pipe(
-      fromNullable(frontmatter.date),
-      toUndefined
-    )
+    const date: string | undefined = pipe(fromNullable(frontmatter.date), toUndefined)
 
     return {
       id,
