@@ -4,7 +4,7 @@ import { MainLayout } from '/layouts/main'
 
 export default function OtherPage() {
   return (
-    <MainLayout>
+    <MainLayout title="other page">
       <h1>other page</h1>
     </MainLayout>
   )

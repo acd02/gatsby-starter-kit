@@ -15,10 +15,10 @@ type Props = {
 export function Link(props: Props) {
   return (
     <ClassNames>
-      {({ css }) => (
+      {({ css, cx, theme }) => (
         <GatsbyLink
+          className={cx(css(styles.root(theme)), css(props.styles))}
           activeClassName={css(styles.isActive)}
-          css={[styles.root, props.styles]}
           to={props.to}
         >
           {props.label}

@@ -1,13 +1,13 @@
 import { css } from '@emotion/core'
 
-import { colors } from '/styles/colors'
-import { fontSizes } from '/styles/fonts'
+import { Theme } from '/theme'
 
-const date = css({
-  display: 'block',
-  fontSize: fontSizes.default,
-  color: colors.lightGrey
-})
+const date = (t: Theme) =>
+  css({
+    display: 'block',
+    fontSize: t.fontSizes.default,
+    color: t.colors.lightGrey
+  })
 
 export const styles = {
   date

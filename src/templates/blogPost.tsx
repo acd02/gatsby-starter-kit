@@ -1,11 +1,3 @@
-import {
-  filter as filterOpt,
-  fromNullable,
-  getOrElse,
-  map as mapOpt,
-  toUndefined
-} from 'fp-ts/lib/Option'
-import { pipe } from 'fp-ts/lib/pipeable'
 import { graphql } from 'gatsby'
 import * as React from 'react'
 
@@ -37,24 +29,16 @@ export default function BlogPost(props: Props) {
 
   const frontmatter = _frontmatter as MarkdownRemarkFrontmatter
 
-  const content = pipe(
-    fromNullable(html),
-    getOrElse(() => '')
-  )
-  const title = pipe(
-    fromNullable(frontmatter.title),
-    filterOpt(t => t.length > 0),
-    getOrElse(() => 'no title')
-  )
-
-  const date: React.ReactElement | undefined = pipe(
-    fromNullable(frontmatter.date),
-    mapOpt(d => <span css={styles.date}>{`published on ${d}`}</span>),
-    toUndefined
+  const content = html ?? ''
+  const title = frontmatter.title?.length ? frontmatter.title : 'no title'
+  const date = frontmatter.date ? (
+    <span css={styles.date}>{`published on ${frontmatter.date}`}</span>
+  ) : (
+    undefined
   )
 
   return (
-    <MainLayout>
+    <MainLayout title={title}>
       <div className={theme.markdown}>
         <h1>
           {title} {date}

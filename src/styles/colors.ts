@@ -5,3 +5,5 @@ export const colors = {
   lightGrey: '#999',
   text: '#000000c4'
 }
+
+export type Colors = keyof typeof colors

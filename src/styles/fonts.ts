@@ -10,3 +10,5 @@ export const fontSizes = {
   lg: toRem(defaultValue * 3),
   xl: toRem(defaultValue * 4)
 }
+
+export type FontSizes = keyof typeof fontSizes

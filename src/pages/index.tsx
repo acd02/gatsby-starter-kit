@@ -1,20 +1,10 @@
 import { css } from '@emotion/core'
-import {
-  filter as filterOpt,
-  fromNullable,
-  getOrElse,
-  mapNullable,
-  toUndefined
-} from 'fp-ts/lib/Option'
-import { pipe } from 'fp-ts/lib/pipeable'
 import { graphql, useStaticQuery } from 'gatsby'
 import * as React from 'react'
-import { Helmet } from 'react-helmet'
 
 import { Link } from '/components/atoms/link'
 import { MainLayout } from '/layouts/main'
-import { fontSizes } from '/styles/fonts'
-import { spacings } from '/styles/spacings'
+import { Theme } from '/theme'
 import {
   MarkdownRemarkConnection,
   MarkdownRemarkFrontmatter
@@ -68,19 +58,10 @@ export default function Home() {
   const posts: PostContent[] = postsQuery.allMarkdownRemark.edges.map(e => {
     const { frontmatter: _frontmatter, id, fields } = e.node
     const frontmatter = _frontmatter as MarkdownRemarkFrontmatter
-    const slug = pipe(
-      fromNullable(fields),
-      mapNullable(f => f.slug),
-      getOrElse(() => '')
-    )
 
-    const title = pipe(
-      fromNullable(frontmatter.title),
-      filterOpt(t => t.length > 0),
-      toUndefined
-    )
-
-    const date: string | undefined = pipe(fromNullable(frontmatter.date), toUndefined)
+    const slug = fields?.slug ?? ''
+    const title = frontmatter.title?.length ? frontmatter.title : undefined
+    const date: string | undefined = frontmatter.date || undefined
 
     return {
       id,
@@ -91,28 +72,25 @@ export default function Home() {
   })
 
   return (
-    <>
-      <Helmet>
-        <title>Home</title>
-      </Helmet>
-      <MainLayout>
-        <h1>Home</h1>
-        <h3>Posts:</h3>
-        <ul css={postsStyles}>{posts.map(renderPostLink)}</ul>
-      </MainLayout>
-    </>
+    <MainLayout title="home">
+      <h1>Home</h1>
+      <h3>Posts:</h3>
+      <ul css={postsStyles}>{posts.map(renderPostLink)}</ul>
+    </MainLayout>
   )
 }
 
-const postsStyles = css({
-  '> li': {
-    marginBottom: spacings.sm
-  }
-})
+const postsStyles = (t: Theme) =>
+  css({
+    '> li': {
+      marginBottom: t.spacings.sm
+    }
+  })
 
-const postStyles = css({
-  a: {
-    marginRight: spacings.sm,
-    fontSize: fontSizes.legible
-  }
-})
+const postStyles = (t: Theme) =>
+  css({
+    a: {
+      marginRight: t.spacings.sm,
+      fontSize: t.fontSizes.legible
+    }
+  })
