@@ -4,11 +4,12 @@
   "license": "MIT",
   "version": "1.0.0",
   "scripts": {
-    "build": "gatsby build",
+    "build": "npm run lint:prod && gatsby build",
     "clean": "gatsby clean",
     "develop": "env-cmd -f .env.development gatsby develop",
     "generate": "graphql-codegen",
     "lint": "eslint --config .eslintrc.js ./src --ext .ts,.tsx --fix",
+    "lint:prod": "eslint --config .eslintrc.prod.js ./src --ext .ts,.tsx --fix",
     "lint-staged": "lint-staged --config .lintstagedrc.json",
     "prettier": "prettier --config .prettierrc.json --write \"src/**/*.{ts,tsx}\"",
     "start": "npm run develop"
