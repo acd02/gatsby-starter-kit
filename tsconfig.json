@@ -16,6 +16,7 @@
     "noUnusedParameters": true,
     "paths": {
       "*": ["./src/*"],
+      "/theme": ["./src/styles/theme.ts"]
     },
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,

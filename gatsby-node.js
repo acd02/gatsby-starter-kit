@@ -18,7 +18,7 @@ exports.onCreateWebpackConfig = ({ actions }) => {
         '/layouts': path.resolve(__dirname, './src/layouts/'),
         '/routes': path.resolve(__dirname, './src/routes.ts'),
         '/styles': path.resolve(__dirname, './src/styles/'),
-        '/theme': path.resolve(__dirname, './src/theme.ts'),
+        '/theme': path.resolve(__dirname, './src/styles/theme.ts'),
         '/templates': path.resolve(__dirname, './src/templates/'),
         '/typings': path.resolve(__dirname, './typings/'),
         '/utils': path.resolve(__dirname, './src/utils/')

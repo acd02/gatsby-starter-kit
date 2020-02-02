@@ -1,6 +1,6 @@
-import { Colors, colors } from '/styles/colors'
-import { FontSizes, fontSizes } from '/styles/fonts'
-import { Spacing, spacings } from '/styles/spacings'
+import { Colors, colors } from './colors'
+import { FontSizes, fontSizes } from './fonts'
+import { Spacing, spacings } from './spacings'
 
 export type Theme = {
   colors: Record<Colors, string>
