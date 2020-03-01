@@ -6,8 +6,14 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-typescript',
     'gatsby-plugin-typescript-checker',
-    'gatsby-plugin-sass',
-    'gatsby-plugin-emotion',
+    'gatsby-plugin-postcss',
+    {
+      resolve: 'gatsby-plugin-purgecss',
+      options: {
+        tailwind: true,
+        purgeOnly: ['src/css/tailwind.css']
+      }
+    },
     {
       resolve: 'gatsby-plugin-eslint',
       options: {

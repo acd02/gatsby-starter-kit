@@ -1,19 +1,17 @@
-import { ThemeProvider } from 'emotion-theming'
 import * as React from 'react'
 import { Helmet } from 'react-helmet'
 
 import { Link } from '/components/atoms/link'
 import { Routes } from '/routes'
-import { theme } from '/theme'
 
-import { styles } from './styles'
+import styles from './styles.module.css'
 
 function Nav() {
   return (
-    <nav css={styles.nav}>
-      <header>nav</header>
-      <ul css={styles.links}>
-        <Link to={Routes.index} label="Home" />
+    <nav className="flex-none mb-4 py-6 px-2 text-center">
+      <header className="mb-4 text-4xl">nav</header>
+      <ul className="flex flex-wrap justify-center">
+        <Link className="mr-4" to={Routes.index} label="Home" />
         <Link to={Routes.otherPage} label="Other Page" />
       </ul>
     </nav>
@@ -21,20 +19,20 @@ function Nav() {
 }
 
 function Footer() {
-  return <footer css={styles.footer}>footer</footer>
+  return <footer className="flex-none text-center py-6 px-4">footer</footer>
 }
 
 export function MainLayout(props: { title: string } & React.Props<{}>) {
   return (
-    <ThemeProvider theme={theme}>
+    <>
       <Helmet>
-        <title>{props.title} </title>
+        <title>{props.title}</title>
       </Helmet>
-      <div css={styles.root}>
+      <div className="flex h-full flex-col">
         <Nav />
-        <main css={styles.main}>{props.children}</main>
+        <main className={styles.main}>{props.children}</main>
         <Footer />
       </div>
-    </ThemeProvider>
+    </>
   )
 }

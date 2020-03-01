@@ -1,10 +1,8 @@
-import { css } from '@emotion/core'
 import { graphql, useStaticQuery } from 'gatsby'
 import * as React from 'react'
 
 import { Link } from '/components/atoms/link'
 import { MainLayout } from '/layouts/main'
-import { Theme } from '/theme'
 import {
   MarkdownRemarkConnection,
   MarkdownRemarkFrontmatter
@@ -27,8 +25,8 @@ function renderPostLink(post: PostContent) {
   const dateLabel = date ? `published ${date}` : 'unknown date publication'
 
   return (
-    <li css={postStyles} key={id}>
-      <Link to={`/${slug}`} label={title || 'no title'} />
+    <li className="mb-2" key={id}>
+      <Link className="mr-2 text-lg" to={`/${slug}`} label={title || 'no title'} />
       <span>{dateLabel}</span>
     </li>
   )
@@ -74,23 +72,8 @@ export default function Home() {
   return (
     <MainLayout title="home">
       <h1>Home</h1>
-      <h3>Posts:</h3>
-      <ul css={postsStyles}>{posts.map(renderPostLink)}</ul>
+      <h3 className="mb-4 text-3xl">Posts:</h3>
+      <ul>{posts.map(renderPostLink)}</ul>
     </MainLayout>
   )
 }
-
-const postsStyles = (t: Theme) =>
-  css({
-    '> li': {
-      marginBottom: t.spacings.sm
-    }
-  })
-
-const postStyles = (t: Theme) =>
-  css({
-    a: {
-      marginRight: t.spacings.sm,
-      fontSize: t.fontSizes.legible
-    }
-  })

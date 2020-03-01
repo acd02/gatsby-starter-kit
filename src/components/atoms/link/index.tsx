@@ -1,29 +1,25 @@
-import { ClassNames, SerializedStyles } from '@emotion/core'
+import cx from 'classcat'
 import { Link as GatsbyLink } from 'gatsby'
 import * as React from 'react'
 
 import { Routes } from '/routes'
 
-import { styles } from './styles'
+import styles from './styles.module.css'
 
 type Props = {
   to: Routes | string
   label: string
-  styles?: SerializedStyles
+  className?: string
 }
 
 export function Link(props: Props) {
   return (
-    <ClassNames>
-      {({ css, cx, theme }) => (
-        <GatsbyLink
-          className={cx(css(styles.root(theme)), css(props.styles))}
-          activeClassName={css(styles.isActive)}
-          to={props.to}
-        >
-          {props.label}
-        </GatsbyLink>
-      )}
-    </ClassNames>
+    <GatsbyLink
+      className={cx([styles.link, props.className])}
+      activeClassName={styles.isActive}
+      to={props.to}
+    >
+      {props.label}
+    </GatsbyLink>
   )
 }

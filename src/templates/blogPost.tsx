@@ -4,8 +4,7 @@ import * as React from 'react'
 import { MainLayout } from '/layouts/main'
 import { MarkdownRemark, MarkdownRemarkFrontmatter } from '/typings/graphqlTypes'
 
-import * as theme from './markdown.module.scss'
-import { styles } from './styles'
+import theme from './markdown.module.css'
 
 type Props = {
   data: {
@@ -32,7 +31,7 @@ export default function BlogPost(props: Props) {
   const content = html ?? ''
   const title = frontmatter.title?.length ? frontmatter.title : 'no title'
   const date = frontmatter.date ? (
-    <span css={styles.date}>{`published on ${frontmatter.date}`}</span>
+    <span className="block text-base font-normal text-gray-500">{`published on ${frontmatter.date}`}</span>
   ) : (
     undefined
   )

@@ -1,0 +1,22 @@
+.link {
+  @apply relative text-gray-600;
+  &::before {
+    @apply absolute left-0 right-0 bg-gray-400 origin-bottom-right;
+    content: '';
+    bottom: -2px;
+    height: 2px;
+    transform: scaleX(0);
+    transition: transform 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+  &:hover:before {
+    @apply origin-bottom-left;
+    transform: scaleX(1);
+  }
+}
+
+.isActive {
+  &::before {
+    transform-origin: bottom left !important;
+    transform: scaleX(1) !important;
+  }
+}
