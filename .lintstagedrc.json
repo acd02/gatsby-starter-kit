@@ -1,8 +1,6 @@
 {
-  "src/**/*.{ts,tsx}": [
+  "src/**/*.ts?(x)": [
     "npm run lint:prod",
-    "git add",
-    "npm run prettier",
-    "git add"
+    "npm run prettier"
   ]
 }
