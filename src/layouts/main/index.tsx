@@ -1,3 +1,4 @@
+import cx from 'classcat'
 import * as React from 'react'
 import { Helmet } from 'react-helmet'
 
@@ -30,7 +31,11 @@ export function MainLayout(props: { title: string } & React.Props<{}>) {
       </Helmet>
       <div className="flex h-full flex-col">
         <Nav />
-        <main className={styles.main}>{props.children}</main>
+        <main
+          className={cx(['w-full p-2 max-w-screen-lg mx-auto flex-grow', styles.main])}
+        >
+          {props.children}
+        </main>
         <Footer />
       </div>
     </>

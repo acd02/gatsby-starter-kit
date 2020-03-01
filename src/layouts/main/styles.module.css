@@ -1,5 +1,4 @@
 .main {
-  @apply w-full p-2 max-w-screen-lg mx-auto flex-grow;
   & h1 {
     @apply mb-4 text-5xl;
   }

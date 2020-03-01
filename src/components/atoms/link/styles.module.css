@@ -1,5 +1,4 @@
 .link {
-  @apply relative text-gray-600;
   &::before {
     @apply absolute left-0 right-0 bg-gray-400 origin-bottom-right;
     content: '';

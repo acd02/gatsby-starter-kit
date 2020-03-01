@@ -15,7 +15,7 @@ type Props = {
 export function Link(props: Props) {
   return (
     <GatsbyLink
-      className={cx([styles.link, props.className])}
+      className={cx(['relative text-gray-600', styles.link, props.className])}
       activeClassName={styles.isActive}
       to={props.to}
     >
