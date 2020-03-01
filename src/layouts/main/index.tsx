@@ -7,23 +7,11 @@ import { Routes } from '/routes'
 
 import styles from './styles.module.css'
 
-function Nav() {
-  return (
-    <nav className="flex-none mb-4 py-6 px-2 text-center">
-      <header className="mb-4 text-4xl">nav</header>
-      <ul className="flex flex-wrap justify-center">
-        <Link className="mr-4" to={Routes.index} label="Home" />
-        <Link to={Routes.otherPage} label="Other Page" />
-      </ul>
-    </nav>
-  )
-}
+type Props = {
+  title: string
+} & React.Props<{}>
 
-function Footer() {
-  return <footer className="flex-none text-center py-6 px-4">footer</footer>
-}
-
-export function MainLayout(props: { title: string } & React.Props<{}>) {
+export function MainLayout(props: Props) {
   return (
     <>
       <Helmet>
@@ -40,4 +28,22 @@ export function MainLayout(props: { title: string } & React.Props<{}>) {
       </div>
     </>
   )
+}
+
+// utils
+
+function Nav() {
+  return (
+    <nav className="flex-none mb-4 py-6 px-2 text-center">
+      <header className="mb-4 text-4xl">nav</header>
+      <ul className="flex flex-wrap justify-center">
+        <Link className="mr-4" to={Routes.index} label="Home" />
+        <Link to={Routes.otherPage} label="Other Page" />
+      </ul>
+    </nav>
+  )
+}
+
+function Footer() {
+  return <footer className="flex-none text-center py-6 px-4">footer</footer>
 }

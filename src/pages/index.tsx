@@ -14,23 +14,11 @@ type Query = {
 
 type PostContent = {
   id: string
-  date?: string
-  title?: string
+  date: string
+  title: string
   slug: string
 }
 
-function renderPostLink(post: PostContent) {
-  const { title, slug, id, date } = post
-
-  const dateLabel = date ? `published ${date}` : 'unknown date publication'
-
-  return (
-    <li className="mb-2" key={id}>
-      <Link className="mr-2 text-lg" to={`/${slug}`} label={title || 'no title'} />
-      <span>{dateLabel}</span>
-    </li>
-  )
-}
 /* eslint-disable-next-line max-lines-per-function */
 export default function Home() {
   const postsQuery: Query = useStaticQuery(graphql`
@@ -58,8 +46,8 @@ export default function Home() {
     const frontmatter = _frontmatter as MarkdownRemarkFrontmatter
 
     const slug = fields?.slug ?? ''
-    const title = frontmatter.title?.length ? frontmatter.title : undefined
-    const date: string | undefined = frontmatter.date || undefined
+    const title = frontmatter.title ?? ''
+    const date: string = frontmatter.date ?? ''
 
     return {
       id,
@@ -75,5 +63,20 @@ export default function Home() {
       <h3 className="mb-4 text-3xl">Posts:</h3>
       <ul>{posts.map(renderPostLink)}</ul>
     </MainLayout>
+  )
+}
+
+// utils
+
+function renderPostLink(post: PostContent) {
+  const { title, slug, id, date } = post
+
+  const dateLabel = date ? `published ${date}` : 'unknown date publication'
+
+  return (
+    <li className="mb-2" key={id}>
+      <Link className="mr-2 text-lg" to={`/${slug}`} label={title || 'no title'} />
+      <span>{dateLabel}</span>
+    </li>
   )
 }
