@@ -9,6 +9,7 @@
     "develop": "env-cmd -f .env.development gatsby develop",
     "generate": "graphql-codegen",
     "lint": "eslint --config .eslintrc.js ./src --ext .ts,.tsx --fix",
+    "lint:styles": "stylelint --fix \"./src/**/*.module.css\"",
     "lint:prod": "eslint --config .eslintrc.prod.js ./src --ext .ts,.tsx --fix",
     "lint-staged": "lint-staged --config .lintstagedrc.json",
     "prettier": "prettier --config .prettierrc.json --write \"src/**/*.{ts,tsx}\"",
@@ -66,6 +67,8 @@
     "node-sass": "4.13.1",
     "postcss-nesting": "7.0.1",
     "prettier": "1.19.1",
+    "stylelint": "13.2.0",
+    "stylelint-config-standard": "20.0.0",
     "tailwindcss": "1.2.0",
     "ts-node": "8.6.2",
     "typescript": "3.7.5"
