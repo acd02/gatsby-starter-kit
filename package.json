@@ -68,7 +68,9 @@
     "postcss-nesting": "7.0.1",
     "prettier": "1.19.1",
     "stylelint": "13.2.0",
+    "stylelint-config-rational-order": "0.1.2",
     "stylelint-config-standard": "20.0.0",
+    "stylelint-order": "4.0.0",
     "tailwindcss": "1.2.0",
     "ts-node": "8.6.2",
     "typescript": "3.7.5"

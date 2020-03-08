@@ -3,10 +3,10 @@
   .markdown *,
   .markdown ::after,
   .markdown ::before {
-    background: transparent !important;
     color: #000 !important;
-    box-shadow: none !important;
     text-shadow: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
   }
 
   .markdown a,
@@ -29,8 +29,8 @@
 
   .markdown blockquote,
   .markdown pre {
-    border: 1px solid #999;
     page-break-inside: avoid;
+    border: 1px solid #999;
   }
 
   .markdown thead {
@@ -62,10 +62,10 @@
 .markdown {
   max-width: 48rem;
   margin: 6rem auto 1rem;
-  line-height: 1.85;
-  font-size: 12px;
-  font-weight: 300;
   color: #444;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 1.85;
 }
 
 @media screen and (min-width: 32rem) and (max-width: 48rem) {
@@ -82,8 +82,8 @@
 
 .markdown .air-p,
 .markdown p {
-  font-size: 1em;
   margin-bottom: 1.3em;
+  font-size: 1em;
 }
 
 .markdown .air-h1,
@@ -146,10 +146,10 @@
 }
 
 .markdown img {
-  border-radius: 50%;
+  width: 200px;
   height: 200px;
   margin: 0 auto;
-  width: 200px;
+  border-radius: 50%;
 }
 
 .markdown a,
@@ -164,8 +164,8 @@
 }
 
 .markdown pre {
-  background-color: #fafafa;
   padding: 1em;
+  background-color: #fafafa;
 }
 
 .markdown blockquote,
@@ -175,16 +175,16 @@
 
 .markdown blockquote {
   margin: 0;
-  border-left: 5px solid #7a7a7a;
-  font-style: italic;
   padding: 1.33em;
+  font-style: italic;
+  border-left: 5px solid #7a7a7a;
 }
 
 .markdown li,
 .markdown ol,
 .markdown ul {
-  text-align: left;
   font-weight: 300;
+  text-align: left;
 }
 
 .markdown ul,
